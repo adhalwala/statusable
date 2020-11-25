@@ -3,7 +3,6 @@
 namespace Aecor\Status;
 
 use Illuminate\Support\ServiceProvider;
-use Aecor\Status\Commands\StatusCommand;
 
 class StatusServiceProvider extends ServiceProvider
 {

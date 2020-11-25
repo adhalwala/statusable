@@ -19,7 +19,7 @@ trait HasStatus
     }
 
     public function addStatus($data)
-    {   
+    {
         return $this->statuses()->create($data);
     }
 

@@ -2,9 +2,9 @@
 
 namespace Aecor\Status\Tests;
 
+use Aecor\Status\StatusServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Aecor\Status\StatusServiceProvider;
 
 class TestCase extends Orchestra
 {
