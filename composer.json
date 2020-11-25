@@ -1,0 +1,55 @@
+{
+    "name": "aecor/statusable",
+    "description": "Add status to any model",
+    "keywords": [
+        "aecor",
+        "statusable"
+    ],
+    "homepage": "https://github.com/aecor/statusable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Abrar Dhalwala",
+            "email": "adhalwala@aecordigital.com",
+            "homepage": "https://aecordigital.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "illuminate/contracts": "^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.3",
+        "vimeo/psalm": "^3.11"
+    },
+    "autoload": {
+        "psr-4": {
+            "Aecor\\Status\\": "src",
+            "Aecor\\Status\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Aecor\\Status\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "psalm": "vendor/bin/psalm",
+        "test": "vendor/bin/phpunit --colors=always",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Aecor\\Status\\StatusServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
