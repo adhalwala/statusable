@@ -6,11 +6,9 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 trait HasStatus
 {
-    abstract public function morphToMany($related, $name, $type = null, $id = null, $localKey = null);
-
     public function statuses(): MorphToMany
     {
-        return $this->morphToMany(Status::class, 'model');
+        return $this->morphToMany(Status::class, 'statusable');
     }
 
     public function status()
@@ -23,19 +21,29 @@ trait HasStatus
         return $this->statuses()->create($data);
     }
 
-    public function addManyStatuses(array $records)
+    public function addManyStatus(array $records)
     {
         foreach ($records as $record) {
             $this->statuses()->create($record);
         }
     }
 
-    public function assignStatus(array $records)
+    public function assignStatus($record)
+    {
+        $this->statuses()->attach($record);
+    }
+
+    public function assignManyStatus(array $records)
     {
         $this->statuses()->attach($records);
     }
     
-    public function syncStatus(array $records)
+    public function syncStatus($record)
+    {
+        $this->statuses()->sync($record);
+    }
+
+    public function syncManyStatus(array $records)
     {
         $this->statuses()->sync($records);
     }

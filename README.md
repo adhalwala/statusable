@@ -28,20 +28,81 @@ This is the contents of the published config file:
 
 ```php
 return [
+    'status-table-name' => 'statuses'
 ];
 ```
 
-## Usage
-
+## Usage and few examples
+Prepare your model
 ``` php
-$statusable = new Aecor\Status();
-echo $statusable->echoPhrase('Hello, Aecor!');
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Aecor\Status\Traits\HasStatus;
+
+class YourModel extends Model
+{
+    use HasStatus;
+}
 ```
 
-## Testing
+Get instance of your model
+``` php
+$user = \App\Models\User::find(1);
+```
 
-``` bash
-composer test
+Add a single contact
+``` php
+$user->addStatus([
+    [
+        'name' => 'active',
+    ]
+]);
+```
+
+Add multiple status
+``` php
+$user->addManyStatus([
+    [
+        'name' => 'Active',
+    ],
+    [
+        'name' => 'De-active',
+    ],
+    [
+        'name' => 'On-hold',
+    ],
+]);
+```
+
+Assign new status
+``` php
+$status = Status::where('name', 'Active')->first();
+$status2 = Status::where('name', 'On-hold')->first();
+
+$user->assignStatus($status->id);
+
+$user->assignManyStatus([$status->id, $status2->id]);
+```
+
+Sync status
+``` php
+$status = Status::where('name', 'Active')->first();
+$status2 = Status::where('name', 'On-hold')->first();
+
+$user->syncStatus($status->id);
+
+$user->syncManyStatus([$status->id, $status2->id]);
+```
+
+Get all status
+``` php
+$user->statuses;
+```
+
+Get first status
+``` php
+$user->status();
 ```
 
 ## Changelog

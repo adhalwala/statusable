@@ -18,27 +18,21 @@ class CreateStatusTable extends Migration
             $table->timestamps();
         });
         
-        Schema::create($this->getStatusRelationTableName(), function (Blueprint $table) {
+        Schema::create('statusables', function (Blueprint $table) {
             $table->integer('status_id')->unsigned();
-            $table->morphs('model');
+            $table->morphs('statusable');
             $table->foreign('status_id')->references('id')->on($this->getStatusTableName())->onDelete('cascade');
-            $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::drop($this->getStatusRelationTableName());
+        Schema::drop('statusables');
         Schema::drop($this->getStatusTableName());
     }
 
     public function getStatusTableName()
     {
         return config('statusable.status-table-name');
-    }
-
-    public function getStatusRelationTableName()
-    {
-        return config('statusable.status-relation-table-name');
     }
 }
