@@ -2,7 +2,6 @@
 namespace Aecor\Status\Traits;
 
 use Aecor\Status\Models\Status;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 trait HasStatus
