@@ -27,6 +27,7 @@ trait HasStatus
         foreach ($records as $record) {
             $statuses[] = $this->statuses()->create($record);
         }
+
         return $statuses;
     }
 
