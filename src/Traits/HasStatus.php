@@ -2,7 +2,6 @@
 namespace Aecor\Status\Traits;
 
 use Aecor\Status\Models\Status;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 trait HasStatus
@@ -24,9 +23,11 @@ trait HasStatus
 
     public function addManyStatus(array $records)
     {
+        $statuses = [];
         foreach ($records as $record) {
-            $this->statuses()->create($record);
+            $statuses[] = $this->statuses()->create($record);
         }
+        return $statuses;
     }
 
     public function assignStatus($record)
