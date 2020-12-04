@@ -18,6 +18,7 @@ class Status extends Model
     protected $guarded = [];
 
     protected $casts = [
+        'custom_attributes' => 'array',
         'order_column' => 'integer',
     ];
 
@@ -26,6 +27,7 @@ class Status extends Model
         'slug',
         'type',
         'order_column',
+        'custom_attributes'
     ];
 
     /**

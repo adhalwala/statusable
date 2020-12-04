@@ -51,11 +51,23 @@ Get instance of your model
 $user = \App\Models\User::find(1);
 ```
 
+All the common fields are available in database given below, additionally you can store your own details as json in 'custom_attributes' field. All the fields are kept nullable to make it easy implementation.
+``` php
+'name',
+'type',
+'custom_attributes' // json field to add any additional data
+'order_column'
+```
+
 Add a single contact
 ``` php
 $user->addStatus([
     [
-        'name' => 'active',
+        'name' => 'Active',
+        'type' => 'user',
+        'custom_attributes' => [
+            'group' => 'some-text'
+        ],
     ]
 ]);
 ```
