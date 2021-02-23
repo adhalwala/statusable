@@ -27,7 +27,7 @@ class Status extends Model
         'slug',
         'type',
         'order_column',
-        'custom_attributes'
+        'custom_attributes',
     ];
 
     /**
